@@ -246,9 +246,9 @@ class Bju extends Module{
   //               Pipe2 EX2 Instruction Data
   //----------------------------------------------------------
   val ex2_pipe_pcfifo_read = RegEnable(ex1_pipe_pcfifo_read,0.U.asTypeOf(new IfuPredStore),ex1_pipe_inst_vld)
-  val ex2_pipe_abnormal    = RegEnable(bju_bht_mispred || bju_jmp_mispred,false.B,ex1_pipe_inst_vld)
-  val ex2_pipe_bht_mispred = RegEnable(bju_bht_mispred,false.B,ex1_pipe_inst_vld)
-  val ex2_pipe_jmp_mispred = RegEnable(bju_jmp_mispred,false.B,ex1_pipe_inst_vld)
+  val ex2_pipe_abnormal    = RegEnable(bju_bht_mispred || bju_jmp_mispred_vld,false.B,ex1_pipe_inst_vld)
+  val ex2_pipe_bht_mispred = RegEnable(bju_bht_mispred_vld,false.B,ex1_pipe_inst_vld)
+  val ex2_pipe_jmp_mispred = RegEnable(bju_jmp_mispred_vld,false.B,ex1_pipe_inst_vld)
   val ex2_pipe_tar_pc      = RegEnable(bju_tar_pc,0.U(PcWidth.W),ex1_pipe_inst_vld)
   val ex2_pipe_is_br       = RegEnable(is_br,false.B,ex1_pipe_inst_vld)
   val ex2_pipe_is_jmp      = RegEnable(is_jmp,false.B,ex1_pipe_inst_vld)
